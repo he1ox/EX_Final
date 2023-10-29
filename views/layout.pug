@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/static/css/styles.css")
+        block title
+            title MedicalCare+
+    body
+        header
+            .header-container
+                h1 MedicalCare+
+                nav
+                    ul(class='horizontal-list')
+                        li
+                            button(type="button", onclick='inicio()', class='button-nav') Inicio
+                        li
+                            button(type="button", onclick='pacientes()', class='button-nav') Pacientes
+                        li
+                            button(type="button", onclick='expedientes()', class='button-nav') Historia Clínica
+        .main-content
+            block content
+        script(src="/static/js/layout.js")
+        footer
+            .footer-container
+                p &copy; 2023 MedicalCare+ - Todos los derechos reservados

@@ -1,0 +1,41 @@
+/* layout-styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9; /* Un tono de gris claro que es calmante y profesional */
+}
+
+.header-container {
+    background-color: #4CAF50; /* Un verde que podría asociarse con la salud */
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+.button-nav {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.main-content {
+    padding: 20px;
+}
+
+.footer-container {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

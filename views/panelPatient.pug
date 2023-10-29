@@ -1,0 +1,76 @@
+extends layout
+
+block title
+    title Historial de Pacientes
+
+block content
+    .container
+        .form-container
+            h1 Paciente
+            form(id='patient-form')
+                .input-section
+                    .form-group
+                        label(for='name') Nombre:
+                        input(type='text', name='name', id='name', placeholder='Ej. Jorge', required)
+                    
+                    .form-group
+                        label(for='birthdate') Fecha de Nacimiento:
+                        input(type='date', name='birthdate', id='birthdate')
+                    
+                    .form-group
+                        label(for='gender') Género:
+                        select(name='gender', id='gender')
+                            option(value='Masculino') Masculino
+                            option(value='Femenino') Femenino
+                            
+                    
+                    .form-group
+                        label(for='address') Dirección:
+                        input(type='text', name='address', id='address', placeholder='Ej. Jutiapa')
+                    
+                    .form-group
+                        label(for='phone') Teléfono:
+                        input(type='text', name='phone', id='phone', placeholder='Ej. 53038671')
+                    
+                    .form-group
+                        label(for='email') Correo Electrónico:
+                        input(type='email', name='email', id='email', placeholder='ejemplo@dominio.com')
+                    
+                    .form-group
+                        label(for='medicalRecords') Historial Médico:
+                        textarea(name='medicalRecords', id='medicalRecords', placeholder='Ej. Paciente con Fibrosis')
+
+                .form-buttons
+                    button(type='button', id='btn', class='create', onclick='create()') Crear Paciente
+                    button(type='button', id='btn-cancel', class='cancel', onclick='cancelEvent()') Cancelar
+
+        section#table-section
+            h2 Lista de Pacientes
+            .table-container
+                table
+                    thead
+                        tr
+                            th Nombre
+                            th Fecha de Nacimiento
+                            th Género
+                            th Dirección
+                            th Teléfono
+                            th Email
+                            th Historial Médico
+                            th Acciones
+                    tbody
+                        each patient in patients
+                            tr
+                                td #{patient.name}
+                                td #{patient.birthdate.split('T')[0]}
+                                td #{patient.gender}
+                                td #{patient.address}
+                                td #{patient.phone}
+                                td #{patient.email}
+                                td #{patient.medicalRecords}
+                                td
+                                    .action-buttons
+                                        button(type="button", class='edit', onclick=`editPatient('${patient._id}')`) Editar
+                                        button(type="button", class='delete', onclick=`deletePatient('${patient._id}')`) Eliminar
+
+    script(src="/static/js/patient.js")

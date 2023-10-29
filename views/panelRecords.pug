@@ -1,0 +1,67 @@
+extends layout
+
+block title
+    title Historia Clínica
+
+block content
+    .container
+        .form-container
+            h1 Historia Clínica
+            form(id='medical-record-form')
+                .input-section
+                    .form-group
+                        label(for='symptoms') Síntomas:
+                        input(type='text', name='symptoms', id="symptoms", required)
+
+                    .form-group
+                        label(for='diagnosis') Diagnóstico:
+                        input(type='text', name='diagnosis', id='diagnosis', required)
+
+                    .form-group
+                        label(for='treatments') Tratamientos:
+                        input(type='text', name='treatments', id='treatments', required)
+
+                    .form-group
+                        label(for='notes') Notas:
+                        textarea(name='notes', id='notes', required)
+
+                    .form-group
+                        label(for='patient') Paciente (ID):
+                        input(type='text', name='patient', id='patient', required)
+
+                    .form-buttons
+                        button(type="button", id="btn", class='create', onclick="create()" ) Crear Expediente 
+                        button(type="button", id="btn-cancel", class='cancel', onclick='cancelEvent()') Cancelar
+
+        section#table-section
+            h2 Lista de Historiales Clínicos
+            .table-container
+                table
+                    thead
+                        tr
+                            th Síntomas
+                            th Diagnóstico
+                            th Tratamientos
+                            th Notas
+                            th Paciente
+                            th Fecha de Creación
+                            th Acciones
+                    tbody
+                        - if (records)
+                            each record in records
+                                tr
+                                    td #{record.symptoms}
+                                    td #{record.diagnosis}
+                                    td #{record.treatments}
+                                    td #{record.notes}
+                                    td #{record.patient}
+                                    td #{record.dateCreated.split('T')[0]}
+                                    td
+                                        .buttons-events
+                                            button(type="button", class='edit', onclick=`updateRecord('${record._id}')`) Editar
+                                            button(type="button", class='delete' onclick=`deleteRecord('${record._id}')`) Eliminar
+                        - else
+                            tr
+                                td(colspan="7") No hay registros disponibles
+    script(src="https://code.jquery.com/jquery-3.6.0.min.js")
+    script(src="/static/js/record.js") 

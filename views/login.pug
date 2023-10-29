@@ -1,0 +1,26 @@
+html
+    head
+        title Inicio de Sesión | Medical Care
+        link(rel="stylesheet" href="/static/css/login.css")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+    body
+        .container
+            .header
+                h1 MedicalCare +
+            .login-card
+                .logo
+                    img(src="/static/images/hospital-logo.png", alt="Medical Care Logo")
+                form(action="/login", method="post", class="login-form")
+                    h2 Bienvenido, por favor inicie sesión
+                    .form-group
+                        label(for="email") Correo Electrónico
+                        input(type="email", id="email", name="email", placeholder="ejemplo@dominio.com", required)
+                    .form-group
+                        label(for="password") Contraseña
+                        input(type="password", id="password", name="password", placeholder="********", required)
+                    .form-group
+                        button(type="button", onclick='login()') Iniciar Sesión
+                    p(id="msg-error", class="msg-error")
+                .form-footer
+                    a(href="#") ¿Olvidaste tu contraseña?
+        script(src="/static/js/login.js")
